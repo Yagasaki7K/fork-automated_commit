@@ -4,7 +4,7 @@ function DailyCommit() {
   const date = new Date();
   const formatDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
 
-  const gitCommand = `git add . && git commit -m "Commit diário - ${formatDate}"`;
+  const gitCommand = `git add . && git commit -m "Daily Commit - ${formatDate}" && git push`;
 
   exec(gitCommand, (error, stdout, stderr) => {
     if (error || stderr) {

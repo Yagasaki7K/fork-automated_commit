@@ -1,5 +1,14 @@
 {
+  "name": "dailycommit",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
   "dependencies": {
     "child_process": "^1.0.2"
+  },
+  "engines": {
+    "node": ">=16.14"
   }
 }
