@@ -1,22 +1,18 @@
 const { exec } = require('child_process');
 
-function fazerCommitDiario() {
-  const data = new Date();
-  const dataFormatada = `${data.getFullYear()}-${(data.getMonth() + 1).toString().padStart(2, '0')}-${data.getDate().toString().padStart(2, '0')}`;
+function DailyCommit() {
+  const date = new Date();
+  const formatDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`;
 
-  const comandoGit = `git add . && git commit -m "Commit diário - ${dataFormatada}"`;
+  const gitCommand = `git add . && git commit -m "Commit diário - ${formatDate}"`;
 
-  exec(comandoGit, (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Erro ao fazer commit: ${error.message}`);
+  exec(gitCommand, (error, stdout, stderr) => {
+    if (error || stderr) {
+      console.error(`Error while committing: ${error ? error.message : stderr}`);
       return;
     }
-    if (stderr) {
-      console.error(`Erro ao fazer commit: ${stderr}`);
-      return;
-    }
-    console.log(`Commit diário feito em ${dataFormatada}`);
+    console.log(`Daily commit made on ${formatDate}`);
   });
 }
 
-fazerCommitDiario();
+DailyCommit();
